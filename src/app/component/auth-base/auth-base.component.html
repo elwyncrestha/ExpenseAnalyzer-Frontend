@@ -1,0 +1,42 @@
+<div class="d-flex align-items-center justify-content-center h-100 w-100 auth-bg">
+  <mat-card>
+    <mat-card-header>
+      <div class="auth-header-image" mat-card-avatar></div>
+      <mat-card-title>Expense Analyzer</mat-card-title>
+      <mat-card-subtitle>Simple app to track your expense.</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-tab-group>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon>account_box</mat-icon>&nbsp;
+            Login
+          </ng-template>
+          <div class="text-center p-3">
+            <app-login></app-login>
+          </div>
+        </mat-tab>
+
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon>person_add</mat-icon>&nbsp;
+            Registration
+          </ng-template>
+          <div class="text-center p-3">
+            <app-register></app-register>
+          </div>
+        </mat-tab>
+
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon>no_encryption</mat-icon>&nbsp;
+            Reset Password
+          </ng-template>
+          <div class="text-center p-3">
+            <app-forgot-password></app-forgot-password>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+</div>
