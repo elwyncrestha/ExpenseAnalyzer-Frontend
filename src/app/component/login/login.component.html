@@ -20,7 +20,7 @@
                placeholder="Enter password">
         <button (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hidePassword"
-                mat-icon-button matSuffix>
+                mat-icon-button matSuffix type="button">
           <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
         <mat-hint>At least 8 digits</mat-hint>

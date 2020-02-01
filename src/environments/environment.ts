@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  LOCAL_STORAGE_KEY: 'QP`0tWfyasdi^(*rv0gB].ck$s@z(',
+  LOCAL_STORAGE_NAME: 'ExpenseAnalyzer',
+  SERVER_URL: 'http://localhost:3000'
 };
 
 /*

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UserService} from '../../@core/service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,8 @@ export class LoginComponent implements OnInit {
   hidePassword = true;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private userService: UserService
   ) {
   }
 
@@ -30,6 +32,11 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.form.value);
+    this.userService.login(this.form.value).subscribe((response: any) => {
+      alert('logged in');
+    }, error => {
+      console.error(error);
+      alert('login failed');
+    });
   }
 }

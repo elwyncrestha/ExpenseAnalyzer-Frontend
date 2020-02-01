@@ -10,6 +10,7 @@ import {ForgotPasswordComponent} from './component/forgot-password/forgot-passwo
 import {AngularMaterialModule} from './@theme/angular-material/angular-material.module';
 import { RegisterComponent } from './component/register/register.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     BrowserAnimationsModule,
     AngularMaterialModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
