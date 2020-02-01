@@ -8,19 +8,23 @@ import {AuthBaseComponent} from './component/auth-base/auth-base.component';
 import {LoginComponent} from './component/login/login.component';
 import {ForgotPasswordComponent} from './component/forgot-password/forgot-password.component';
 import {AngularMaterialModule} from './@theme/angular-material/angular-material.module';
+import { RegisterComponent } from './component/register/register.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthBaseComponent,
     LoginComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
