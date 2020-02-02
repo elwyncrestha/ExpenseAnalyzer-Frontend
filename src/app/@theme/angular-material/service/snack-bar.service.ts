@@ -10,7 +10,7 @@ export class SnackBarService {
   }
 
   public open(message?: string, action: string = 'Okay', duration: number = 3) {
-    this.matSnackBar.open(message, action, {
+    return this.matSnackBar.open(message, action, {
       duration: duration * 1000
     });
   }
