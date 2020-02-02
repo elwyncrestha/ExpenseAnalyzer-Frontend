@@ -17,4 +17,15 @@ export class AppUtils {
       }),
     };
   }
+
+  public static getRequestUnauthenticated(api: string) {
+    const fullApi = `${this.URL}/${api}`;
+
+    return {
+      url: fullApi,
+      header: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+    };
+  }
 }
