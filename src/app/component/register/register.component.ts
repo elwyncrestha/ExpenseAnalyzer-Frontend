@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../@core/model/user';
 import {ObjectUtils} from '../../@core/utils/object.utils';
@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
   form: FormGroup;
   @Input() user: User;
   hidePassword = true;
+  @Output() registeredEventEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,8 +30,6 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm(this.user);
-    this.user.firstName = 'Elvin';
-    console.log(ObjectUtils.removePropIfEmpty(this.user));
   }
 
   buildForm(user: User): void {
@@ -70,7 +69,12 @@ export class RegisterComponent implements OnInit {
   submit() {
     const user = ObjectUtils.removePropIfEmpty(this.form.value as User);
     this.userService.save(user).subscribe(() => {
-      this.snackBarService.open('Successfully registered!!!');
+      this.snackBarService.open('Successfully registered!!!')
+      .afterDismissed()
+      .subscribe(() => {
+        this.registeredEventEmitter.emit(true);
+        this.form.reset();
+      });
     }, error => {
       console.error(error);
       this.snackBarService.open('Sorry. Failed to register!!!');

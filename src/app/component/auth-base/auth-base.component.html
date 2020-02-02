@@ -6,7 +6,7 @@
       <mat-card-subtitle>Simple app to track your expense.</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <mat-tab-group>
+      <mat-tab-group #matTabGroup [(selectedIndex)]="matSelectedTab">
         <mat-tab>
           <ng-template mat-tab-label>
             <mat-icon>account_box</mat-icon>&nbsp;
@@ -23,7 +23,8 @@
             Registration
           </ng-template>
           <div class="text-center p-3">
-            <app-register [user]="newUser"></app-register>
+            <app-register (registeredEventEmitter)="change()"
+                          [user]="newUser"></app-register>
           </div>
         </mat-tab>
 

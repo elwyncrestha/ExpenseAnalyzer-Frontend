@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {User} from '../../@core/model/user';
+import {MatTabGroup} from '@angular/material/tabs';
 
 @Component({
   selector: 'app-auth-base',
@@ -8,6 +9,8 @@ import {User} from '../../@core/model/user';
 })
 export class AuthBaseComponent implements OnInit {
   newUser: User;
+  matSelectedTab = 0;
+  @ViewChild('matTabGroup', {static: true}) matTabGroup: MatTabGroup;
 
   constructor() { }
 
@@ -15,4 +18,7 @@ export class AuthBaseComponent implements OnInit {
     this.newUser = new User();
   }
 
+  change() {
+    this.matSelectedTab = 0;
+  }
 }
