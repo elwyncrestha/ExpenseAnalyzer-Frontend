@@ -1,9 +1,19 @@
 <div [class.main-is-mobile]="mobileQuery.matches" class="main-container">
   <mat-toolbar class="main-toolbar" color="primary">
-    <button (click)="sidenav.toggle()" mat-icon-button>
-      <mat-icon>menu</mat-icon>
-    </button>
-    <h1 class="main-title">Expense Analyzer</h1>
+    <mat-toolbar-row>
+      <button (click)="sidenav.toggle()" mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <h1 class="main-title">Expense Analyzer</h1>
+      <span class="main-spacer"></span>
+      <mat-menu #appMenu="matMenu">
+        <button (click)="logout()" mat-menu-item>Logout this device</button>
+        <button (click)="logoutAll()" mat-menu-item>Logout all devices</button>
+      </mat-menu>
+      <button [matMenuTriggerFor]="appMenu" mat-icon-button>
+        <mat-icon>backspace</mat-icon>
+      </button>
+    </mat-toolbar-row>
   </mat-toolbar>
 
   <mat-sidenav-container [style.marginTop.px]="mobileQuery.matches ? 56 : 0"

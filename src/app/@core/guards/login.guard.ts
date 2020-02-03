@@ -22,7 +22,7 @@ export class LoginGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (!ObjectUtils.isEmpty(LocalStorageUtils.getStorage().at)) {
-      this.router.navigate(['/main']);
+      this.router.navigate(['/main/dashboard']);
       return false;
     } else {
       return true;
