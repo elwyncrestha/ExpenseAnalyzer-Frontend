@@ -7,11 +7,21 @@
       <h1 class="main-title">Expense Analyzer</h1>
       <span class="main-spacer"></span>
       <mat-menu #appMenu="matMenu">
-        <button (click)="logout()" mat-menu-item>Logout this device</button>
-        <button (click)="logoutAll()" mat-menu-item>Logout all devices</button>
+        <button (click)="profile()" mat-menu-item>
+          <mat-icon>verified_user</mat-icon>
+          Profile
+        </button>
+        <button (click)="logout()" mat-menu-item>
+          <mat-icon>lock</mat-icon>
+          Logout this device
+        </button>
+        <button (click)="logoutAll()" mat-menu-item>
+          <mat-icon>close</mat-icon>
+          Logout all devices
+        </button>
       </mat-menu>
       <button [matMenuTriggerFor]="appMenu" mat-icon-button>
-        <mat-icon>backspace</mat-icon>
+        <mat-icon>more_vert</mat-icon>
       </button>
     </mat-toolbar-row>
   </mat-toolbar>

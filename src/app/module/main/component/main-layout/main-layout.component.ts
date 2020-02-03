@@ -1,10 +1,10 @@
 import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {Menu, MENU_ITEMS} from './sidenav-menu';
-import {UserService} from "../../../../@core/service/user.service";
-import {SnackBarService} from "../../../../@theme/angular-material/service/snack-bar.service";
-import {LocalStorageUtils} from "../../../../@core/utils/local-storage.utils";
-import {Router} from "@angular/router";
+import {UserService} from '../../../../@core/service/user.service';
+import {SnackBarService} from '../../../../@theme/angular-material/service/snack-bar.service';
+import {LocalStorageUtils} from '../../../../@core/utils/local-storage.utils';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-main-layout',
@@ -55,5 +55,9 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
       console.error(error);
       this.snackBarService.open('Failed to logout!!!');
     });
+  }
+
+  profile() {
+
   }
 }
