@@ -1,6 +1,8 @@
 import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import {ExtraOptions, RouterModule, Routes} from '@angular/router';
 import {AuthBaseComponent} from './component/auth-base/auth-base.component';
+import {MainModuleGuard} from './@core/guards/main-module.guard';
+import {LoginGuard} from './@core/guards/login.guard';
 
 
 const routes: Routes = [
@@ -8,13 +10,24 @@ const routes: Routes = [
   {
     path: 'login',
     component: AuthBaseComponent,
-    // TODO Add `LoginGuard`
+    canActivate: [LoginGuard]
+  },
+  {
+    path: 'main',
+    loadChildren: () => import('./module/main/main.module')
+    .then(m => m.MainModule),
+    canActivate: [MainModuleGuard]
   },
   {path: '**', redirectTo: 'login'},
 ];
 
+const config: ExtraOptions = {
+  useHash: false
+};
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, config)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

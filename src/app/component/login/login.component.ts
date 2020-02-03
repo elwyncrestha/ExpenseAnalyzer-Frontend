@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../@core/service/user.service';
 import {SnackBarService} from '../../@theme/angular-material/service/snack-bar.service';
+import {LocalStorage, LocalStorageUtils} from '../../@core/utils/local-storage.utils';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private snackBarService: SnackBarService
+    private snackBarService: SnackBarService,
+    private router: Router
   ) {
   }
 
@@ -39,7 +42,10 @@ export class LoginComponent implements OnInit {
 
   submit() {
     this.userService.login(this.form.value).subscribe((response: any) => {
-      this.snackBarService.open('Login succeeded!!!');
+      const localStorage: LocalStorage = LocalStorageUtils.getStorage();
+      localStorage.at = response.token;
+      LocalStorageUtils.setStorage(localStorage);
+      this.router.navigate(['/main/dashboard']);
     }, error => {
       console.error(error);
       this.snackBarService.open('Login failed!!!');
