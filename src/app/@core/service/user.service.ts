@@ -27,12 +27,23 @@ export class UserService extends BaseService<User> {
     return this.http.get(req.url, {headers: req.header});
   }
 
-  public resetPassword(obj: {email: string, token: string, password: string}): Observable<any> {
+  public resetPassword(obj: { email: string, token: string, password: string }): Observable<any> {
     const req = AppUtils.getRequestUnauthenticated(`${this.getAPI()}/reset-password`);
 
     return this.http.post(req.url, obj, {headers: req.header});
   }
 
+  public logout(): Observable<any> {
+    const req = AppUtils.getRequest(`${this.getAPI()}/logout`);
+
+    return this.http.get(req.url, {headers: req.header});
+  }
+
+  public logoutAll(): Observable<any> {
+    const req = AppUtils.getRequest(`${this.getAPI()}/logout/all`);
+
+    return this.http.get(req.url, {headers: req.header});
+  }
 
   protected getAPI(): string {
     return UserService.URL;

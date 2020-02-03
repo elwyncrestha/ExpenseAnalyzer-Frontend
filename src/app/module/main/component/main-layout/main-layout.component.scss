@@ -27,5 +27,9 @@
        `<body>` to be our scrolling element for mobile layouts. */
     flex: 1 0 auto;
   }
+
+  .main-spacer {
+    flex: 1 1 auto;
+  }
 }
 
