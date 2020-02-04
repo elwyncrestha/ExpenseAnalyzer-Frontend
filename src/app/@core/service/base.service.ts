@@ -27,6 +27,12 @@ export abstract class BaseService<T> {
     return this.http.get(req.url, {headers: req.header});
   }
 
+  public getPageable(page: number = 1, size: number = 10): Observable<any> {
+    const req = AppUtils.getRequest(`${this.getAPI()}/list?page=${page}&size=${size}`);
+
+    return this.http.get(req.url, {headers: req.header});
+  }
+
   public delete(id: string): Observable<any> {
     const req = AppUtils.getRequest(`${this.getAPI()}/${id}`);
 

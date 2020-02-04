@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../@core/model/user';
 import {ObjectUtils} from '../../@core/utils/object.utils';
-import {Pattern} from '../../@core/pattern';
+import {Pattern} from '../../@core/constant/pattern';
 import {UserService} from '../../@core/service/user.service';
 import {SnackBarService} from '../../@theme/angular-material/service/snack-bar.service';
 

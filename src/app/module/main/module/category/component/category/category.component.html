@@ -1,1 +1,77 @@
-<p>category works!</p>
+<div class="row">
+  <div class="col-md-6">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Total Income Categories</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="p-3">
+          <h3>{{cardValues?.income}}</h3>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-md-6">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Total Expense Categories</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="p-3">
+          <h3>{{cardValues?.expense}}</h3>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<br/>
+<div class="row">
+  <div class="col-md-12">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>
+          Categories
+        </mat-card-title>
+        <mat-card-subtitle>List of categories</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="p-3">
+          <div class="d-flex justify-content-end">
+            <button class="ml-2" color="primary" mat-icon-button>
+              <mat-icon>add_box</mat-icon>
+            </button>
+          </div>
+          <table class="table table-bordered table-hover table-striped w-100 text-center">
+            <thead>
+            <tr>
+              <th>S No.</th>
+              <th>Name</th>
+              <th>Created At</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let data of dataSource; let i = index">
+              <td>{{(paginator?.page - 1) * paginator?.size + i + 1}}</td>
+              <td>{{data?.name}}</td>
+              <td>{{data?.createdAt | date | checkEmpty}}</td>
+              <td>
+                <button class="ml-2" color="primary" mat-icon-button>
+                  <mat-icon>edit</mat-icon>
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <mat-paginator (page)="changePage($event)" [length]="paginator?.length"
+                         [pageSizeOptions]="paginator?.options"
+                         [pageSize]="paginator?.size"></mat-paginator>
+          <div *ngIf="spinner" class="d-flex justify-content-center">
+            <mat-progress-spinner [diameter]="50"
+                                  [mode]="progressSpinnerMode"></mat-progress-spinner>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
