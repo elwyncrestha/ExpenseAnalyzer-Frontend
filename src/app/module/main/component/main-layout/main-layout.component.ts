@@ -5,6 +5,8 @@ import {UserService} from '../../../../@core/service/user.service';
 import {SnackBarService} from '../../../../@theme/angular-material/service/snack-bar.service';
 import {LocalStorageUtils} from '../../../../@core/utils/local-storage.utils';
 import {Router} from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
+import {ProfileComponent} from '../profile/profile.component';
 
 @Component({
   selector: 'app-main-layout',
@@ -22,7 +24,8 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
     media: MediaMatcher,
     private userService: UserService,
     private snackBarService: SnackBarService,
-    private router: Router
+    private router: Router,
+    private matDialog: MatDialog
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -58,6 +61,8 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
   }
 
   profile() {
-
+    const dialogRef = this.matDialog.open(ProfileComponent, {
+      width: '500px',
+    });
   }
 }

@@ -14,4 +14,10 @@ export abstract class BaseService<T> {
 
     return this.http.post(req.url, obj, {headers: req.header});
   }
+
+  public update(obj: T): Observable<any> {
+    const req = AppUtils.getRequest(this.getAPI());
+
+    return this.http.patch(req.url, obj, {headers: req.header});
+  }
 }

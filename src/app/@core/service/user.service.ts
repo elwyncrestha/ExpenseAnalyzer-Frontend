@@ -45,6 +45,12 @@ export class UserService extends BaseService<User> {
     return this.http.get(req.url, {headers: req.header});
   }
 
+  public authenticated(): Observable<any> {
+    const req = AppUtils.getRequest(`${this.getAPI()}/authenticated`);
+
+    return this.http.get(req.url, {headers: req.header});
+  }
+
   protected getAPI(): string {
     return UserService.URL;
   }
