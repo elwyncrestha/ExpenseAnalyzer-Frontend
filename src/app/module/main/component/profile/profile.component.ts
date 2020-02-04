@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.buildForm(new User());
     this.userService.authenticated().subscribe((response: any) => {
-      this.user = response;
+      this.user = response.detail;
       this.form.patchValue(JSON.parse(JSON.stringify(this.user)));
     }, error => {
       console.error(error);
