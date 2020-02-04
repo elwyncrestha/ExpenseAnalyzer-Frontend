@@ -5,8 +5,9 @@ import {SnackBarService} from '../../../../../../@theme/angular-material/service
 import {ProgressSpinnerMode} from '@angular/material/progress-spinner/typings/progress-spinner';
 import {PageEvent} from '@angular/material/paginator';
 import {MatDialog} from '@angular/material/dialog';
-import {CategoryFormComponent} from "../category-form/category-form.component";
-import {DialogUtils} from "../../../../../../@core/utils/dialog-utils";
+import {CategoryFormComponent} from '../category-form/category-form.component';
+import {DialogUtils} from '../../../../../../@core/utils/dialog-utils';
+import {CategoryType} from '../../../../../../@core/model/category-type.enum';
 
 @Component({
   selector: 'app-category',
@@ -27,6 +28,7 @@ export class CategoryComponent implements OnInit {
     length: 1,
     page: 1
   };
+  categoryTypeEnum = CategoryType;
 
   constructor(
     private categoryService: CategoryService,
@@ -62,5 +64,22 @@ export class CategoryComponent implements OnInit {
   add() {
     const dialogRef = this.matDialog.open(CategoryFormComponent);
     DialogUtils.resolve(dialogRef, CategoryComponent.load, this);
+  }
+
+  edit(category: Category) {
+    const dialogRef = this.matDialog.open(CategoryFormComponent, {
+      data: category
+    });
+    DialogUtils.resolve(dialogRef, CategoryComponent.load, this);
+  }
+
+  delete(category: Category) {
+    this.categoryService.delete(category._id).subscribe(() => {
+      this.snackBarService.open('Successfully deleted category');
+      CategoryComponent.load(this);
+    }, error => {
+      console.error(error);
+      this.snackBarService.open('Failed to delete category');
+    });
   }
 }

@@ -1,6 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {AppUtils} from '../utils/app.utils';
+import {BaseModel} from '../model/base-model';
 
 export abstract class BaseService<T> {
 
@@ -16,6 +17,8 @@ export abstract class BaseService<T> {
   }
 
   public update(obj: T): Observable<any> {
+    (obj as unknown as BaseModel).id = (obj as unknown as BaseModel)._id;
+    (obj as unknown as BaseModel)._id = undefined;
     const req = AppUtils.getRequest(this.getAPI());
 
     return this.http.patch(req.url, obj, {headers: req.header});

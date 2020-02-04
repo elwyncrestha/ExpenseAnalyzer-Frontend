@@ -1,4 +1,5 @@
 export abstract class BaseModel {
+  id: string;
   // tslint:disable-next-line:variable-name
   _id: any;
   // tslint:disable-next-line:variable-name

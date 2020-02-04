@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, Optional} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {SnackBarService} from '../../../../../../@theme/angular-material/service/snack-bar.service';
-import {MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {ObjectUtils} from '../../../../../../@core/utils/object.utils';
 import {Category} from '../../../../../../@core/model/category';
 import {CategoryService} from '../../../../../../@core/service/category.service';
@@ -22,7 +22,8 @@ export class CategoryFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private snackBarService: SnackBarService,
     private dialogRef: MatDialogRef<CategoryFormComponent, DialogResponse>,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: Category
   ) {
   }
 
@@ -31,7 +32,7 @@ export class CategoryFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.buildForm(new Category());
+    this.buildForm(ObjectUtils.isEmpty(this.data) ? new Category() : this.data);
   }
 
   buildForm(model: Category): void {
@@ -42,19 +43,34 @@ export class CategoryFormComponent implements OnInit {
       name: [
         ObjectUtils.setUndefinedIfNull(model.name),
         [Validators.required]
+      ],
+      type: [
+        ObjectUtils.setUndefinedIfNull(model.type),
+        [Validators.required]
       ]
     });
   }
 
   submit(): void {
     const category = this.form.value as Category;
-    this.categoryService.save(category).subscribe(() => {
-      this.snackBarService.open('Successfully saved category');
-      this.dialogRef.close(new DialogResponse(DialogResponseType.SUCCESS, 'Successfully saved category'));
-    }, error => {
-      console.error(error);
-      this.snackBarService.open('Failed to save category');
-      this.dialogRef.close(new DialogResponse(DialogResponseType.ERROR, 'Successfully saved category'));
-    });
+    if (ObjectUtils.isEmpty(this.data)) {
+      this.categoryService.save(category).subscribe(() => {
+        this.snackBarService.open('Successfully saved category');
+        this.dialogRef.close(new DialogResponse(DialogResponseType.SUCCESS, 'Successfully saved category'));
+      }, error => {
+        console.error(error);
+        this.snackBarService.open('Failed to save category');
+        this.dialogRef.close(new DialogResponse(DialogResponseType.ERROR, 'Failed to save category'));
+      });
+    } else {
+      this.categoryService.update(category).subscribe(() => {
+        this.snackBarService.open('Successfully updated category');
+        this.dialogRef.close(new DialogResponse(DialogResponseType.SUCCESS, 'Successfully updated category'));
+      }, error => {
+        console.error(error);
+        this.snackBarService.open('Failed to update category');
+        this.dialogRef.close(new DialogResponse(DialogResponseType.ERROR, 'Failed to update category'));
+      });
+    }
   }
 }
