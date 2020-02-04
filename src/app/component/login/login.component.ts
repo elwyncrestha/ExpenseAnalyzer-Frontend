@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
   submit() {
     this.userService.login(this.form.value).subscribe((response: any) => {
       const localStorage: LocalStorage = LocalStorageUtils.getStorage();
-      localStorage.at = response.token;
+      localStorage.at = response.detail;
       LocalStorageUtils.setStorage(localStorage);
       this.router.navigate(['/main/dashboard']);
     }, error => {
