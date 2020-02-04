@@ -33,13 +33,15 @@
                  [opened]="true" fixedTopGap="56">
       <mat-nav-list>
         <a *ngFor="let menu of menus" [routerLink]="menu?.link" mat-list-item>
-          {{menu?.title}}&nbsp;<mat-icon>{{menu?.icon}}</mat-icon>
+          <mat-icon>{{menu?.icon}}</mat-icon>&nbsp;{{menu?.title}}
         </a>
       </mat-nav-list>
     </mat-sidenav>
 
     <mat-sidenav-content>
-      <router-outlet></router-outlet>
+      <div class="p-4">
+        <router-outlet></router-outlet>
+      </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

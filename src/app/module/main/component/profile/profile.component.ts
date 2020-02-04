@@ -4,7 +4,7 @@ import {User} from '../../../../@core/model/user';
 import {UserService} from '../../../../@core/service/user.service';
 import {SnackBarService} from '../../../../@theme/angular-material/service/snack-bar.service';
 import {ObjectUtils} from '../../../../@core/utils/object.utils';
-import {Pattern} from '../../../../@core/pattern';
+import {Pattern} from '../../../../@core/constant/pattern';
 import {MatDialogRef} from '@angular/material/dialog';
 
 @Component({

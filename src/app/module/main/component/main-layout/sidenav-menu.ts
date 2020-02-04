@@ -5,5 +5,6 @@ export class Menu {
 }
 
 export const MENU_ITEMS: Array<Menu> = [
-  {title: 'Dashboard', icon: 'dashboard', link: '/main/dashboard'}
+  {title: 'Dashboard', icon: 'dashboard', link: '/main/dashboard'},
+  {title: 'Category', icon: 'category', link: '/main/category'},
 ];

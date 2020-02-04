@@ -8,9 +8,9 @@ import {AuthBaseComponent} from './component/auth-base/auth-base.component';
 import {LoginComponent} from './component/login/login.component';
 import {ForgotPasswordComponent} from './component/forgot-password/forgot-password.component';
 import {AngularMaterialModule} from './@theme/angular-material/angular-material.module';
-import { RegisterComponent } from './component/register/register.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {RegisterComponent} from './component/register/register.component';
 import {HttpClientModule} from '@angular/common/http';
+import {CoreModule} from './@core/core.module';
 
 @NgModule({
   declarations: [
@@ -25,8 +25,8 @@ import {HttpClientModule} from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent],

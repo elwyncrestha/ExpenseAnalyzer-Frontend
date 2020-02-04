@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Pattern} from '../../@core/pattern';
+import {Pattern} from '../../@core/constant/pattern';
 import {UserService} from '../../@core/service/user.service';
 import {SnackBarService} from '../../@theme/angular-material/service/snack-bar.service';
 

@@ -5,7 +5,7 @@ import {MainRoutingModule} from './main-routing.module';
 import {MainLayoutComponent} from './component/main-layout/main-layout.component';
 import {AngularMaterialModule} from '../../@theme/angular-material/angular-material.module';
 import {ProfileComponent} from './component/profile/profile.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {CoreModule} from '../../@core/core.module';
 
 
 @NgModule({
@@ -14,7 +14,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     CommonModule,
     MainRoutingModule,
     AngularMaterialModule,
-    ReactiveFormsModule
+    CoreModule
   ],
   entryComponents: [ProfileComponent]
 })
