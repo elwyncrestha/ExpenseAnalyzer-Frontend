@@ -41,4 +41,10 @@ export abstract class BaseService<T> {
 
     return this.http.delete(req.url, {headers: req.header});
   }
+
+  public statusCount(): Observable<any> {
+    const req = AppUtils.getRequest(`${this.getAPI()}/status-count`);
+
+    return this.http.get(req.url, {headers: req.header});
+  }
 }

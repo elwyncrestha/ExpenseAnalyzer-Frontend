@@ -39,6 +39,13 @@ export class CategoryComponent implements OnInit {
 
   static load(component: CategoryComponent) {
     component.spinner = true;
+    component.categoryService.statusCount().subscribe((response: any) => {
+      component.cardValues.income = response.detail.incomeCount;
+      component.cardValues.expense = response.detail.expenseCount;
+    }, error => {
+      console.error(error);
+      component.snackBarService.open('Failed to load status counts');
+    });
     component.categoryService.getPageable(component.paginator.page, component.paginator.size)
     .subscribe((response: any) => {
       component.dataSource = response.detail.content;

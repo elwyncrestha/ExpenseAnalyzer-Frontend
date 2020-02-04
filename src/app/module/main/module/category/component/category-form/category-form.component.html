@@ -16,8 +16,8 @@
       <mat-form-field appearance="outline" class="w-100">
         <mat-label>Category Type</mat-label>
         <mat-select formControlName="type">
-          <mat-option value="0">Expense</mat-option>
-          <mat-option value="1">Income</mat-option>
+          <mat-option [value]="0">Expense</mat-option>
+          <mat-option [value]="1">Income</mat-option>
         </mat-select>
 
         <mat-icon matSuffix>create</mat-icon>
