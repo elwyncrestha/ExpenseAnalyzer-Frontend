@@ -4,6 +4,9 @@ import {CategoryService} from '../../../../../../@core/service/category.service'
 import {SnackBarService} from '../../../../../../@theme/angular-material/service/snack-bar.service';
 import {ProgressSpinnerMode} from '@angular/material/progress-spinner/typings/progress-spinner';
 import {PageEvent} from '@angular/material/paginator';
+import {MatDialog} from '@angular/material/dialog';
+import {CategoryFormComponent} from "../category-form/category-form.component";
+import {DialogUtils} from "../../../../../../@core/utils/dialog-utils";
 
 @Component({
   selector: 'app-category',
@@ -27,7 +30,8 @@ export class CategoryComponent implements OnInit {
 
   constructor(
     private categoryService: CategoryService,
-    private snackBarService: SnackBarService
+    private snackBarService: SnackBarService,
+    private matDialog: MatDialog
   ) {
   }
 
@@ -50,9 +54,13 @@ export class CategoryComponent implements OnInit {
   }
 
   changePage($event: PageEvent) {
-    console.log($event);
     this.paginator.page = $event.pageIndex + 1;
     this.paginator.size = $event.pageSize;
     CategoryComponent.load(this);
+  }
+
+  add() {
+    const dialogRef = this.matDialog.open(CategoryFormComponent);
+    DialogUtils.resolve(dialogRef, CategoryComponent.load, this);
   }
 }
