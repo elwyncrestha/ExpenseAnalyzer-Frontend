@@ -20,4 +20,16 @@ export abstract class BaseService<T> {
 
     return this.http.patch(req.url, obj, {headers: req.header});
   }
+
+  public getAll(): Observable<any> {
+    const req = AppUtils.getRequest(`${this.getAPI()}/all`);
+
+    return this.http.get(req.url, {headers: req.header});
+  }
+
+  public delete(id: string): Observable<any> {
+    const req = AppUtils.getRequest(`${this.getAPI()}/${id}`);
+
+    return this.http.delete(req.url, {headers: req.header});
+  }
 }
