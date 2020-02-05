@@ -8,14 +8,16 @@ import {SnackBarService} from '../../../../../../@theme/angular-material/service
   styleUrls: ['./category-chart.component.scss']
 })
 export class CategoryChartComponent implements OnInit {
+  static EXPENSE = 'Expense';
+  static INCOME = 'Income';
 
   results = [
     {
-      name: 'Income',
+      name: CategoryChartComponent.INCOME,
       value: 0
     },
     {
-      name: 'Expense',
+      name: CategoryChartComponent.EXPENSE,
       value: 0
     },
   ];
@@ -39,9 +41,9 @@ export class CategoryChartComponent implements OnInit {
   }
 
   onSelect(data): void {
-    if (data.label === 'Expense') {
+    if (data.label === CategoryChartComponent.EXPENSE) {
       this.snackBarService.open(`You have ${data.value} total expense categories.`);
-    } else if (data.label === 'Income') {
+    } else if (data.label === CategoryChartComponent.INCOME) {
       this.snackBarService.open(`You have ${data.value} total income categories.`);
     }
   }
@@ -49,8 +51,11 @@ export class CategoryChartComponent implements OnInit {
   ngOnInit() {
     this.categoryService.statusCount().subscribe((response: any) => {
       this.results = [];
-      this.results.push({name: 'Income', value: response.detail.incomeCount});
-      this.results.push({name: 'Expense', value: response.detail.expenseCount});
+      this.results.push({name: CategoryChartComponent.INCOME, value: response.detail.incomeCount});
+      this.results.push({
+        name: CategoryChartComponent.EXPENSE,
+        value: response.detail.expenseCount
+      });
     }, error => {
       console.error(error);
       this.snackBarService.open('Failed to load status counts');
