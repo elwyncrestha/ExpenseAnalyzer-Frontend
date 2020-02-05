@@ -1,4 +1,5 @@
 import {BaseModel} from './base-model';
+import {CategoryType} from './category-type.enum';
 
 export class Expense extends BaseModel {
   date: Date;
@@ -9,4 +10,5 @@ export class Expense extends BaseModel {
   paymentMethod: any;
   status: any;
   description: string;
+  type: CategoryType;
 }

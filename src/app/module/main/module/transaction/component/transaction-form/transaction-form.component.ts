@@ -101,6 +101,10 @@ export class TransactionFormComponent implements OnInit {
       description: [
         ObjectUtils.setUndefinedIfNull(model.description)
       ],
+      type: [
+        ObjectUtils.setUndefinedIfNull(model.type),
+        [Validators.required]
+      ]
     });
   }
 

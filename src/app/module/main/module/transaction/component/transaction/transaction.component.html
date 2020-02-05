@@ -45,6 +45,7 @@
             <thead>
             <tr>
               <th>S No.</th>
+              <th>Type</th>
               <th>Date</th>
               <th>Time</th>
               <th>Amount</th>
@@ -61,6 +62,7 @@
             <tbody>
             <tr *ngFor="let data of dataSource; let i = index">
               <td>{{(paginator?.page - 1) * paginator?.size + i + 1}}</td>
+              <td>{{categoryTypeEnum[data?.type] | titlecase | checkEmpty}}</td>
               <td>{{data?.date | date | checkEmpty}}</td>
               <td>{{data?.time | checkEmpty}}</td>
               <td>{{data?.amount | checkEmpty}}</td>

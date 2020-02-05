@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {ProgressSpinnerMode} from "@angular/material/progress-spinner/typings/progress-spinner";
-import {SnackBarService} from "../../../../../../@theme/angular-material/service/snack-bar.service";
-import {MatDialog} from "@angular/material/dialog";
-import {PageEvent} from "@angular/material/paginator";
-import {DialogUtils} from "../../../../../../@core/utils/dialog-utils";
-import {Expense} from "../../../../../../@core/model/expense";
-import {ExpenseService} from "../../../../../../@core/service/expense.service";
-import {TransactionFormComponent} from "../transaction-form/transaction-form.component";
+import {ProgressSpinnerMode} from '@angular/material/progress-spinner/typings/progress-spinner';
+import {SnackBarService} from '../../../../../../@theme/angular-material/service/snack-bar.service';
+import {MatDialog} from '@angular/material/dialog';
+import {PageEvent} from '@angular/material/paginator';
+import {DialogUtils} from '../../../../../../@core/utils/dialog-utils';
+import {Expense} from '../../../../../../@core/model/expense';
+import {ExpenseService} from '../../../../../../@core/service/expense.service';
+import {TransactionFormComponent} from '../transaction-form/transaction-form.component';
+import {CategoryType} from '../../../../../../@core/model/category-type.enum';
 
 @Component({
   selector: 'app-transaction',
@@ -27,6 +28,7 @@ export class TransactionComponent implements OnInit {
     length: 1,
     page: 1
   };
+  categoryTypeEnum = CategoryType;
 
   constructor(
     private service: ExpenseService,
