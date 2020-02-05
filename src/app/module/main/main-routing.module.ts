@@ -21,6 +21,11 @@ const routes: Routes = [{
       path: 'expense-status',
       loadChildren: () => import('./module/expense-status/expense-status.module')
       .then(m => m.ExpenseStatusModule)
+    },
+    {
+      path: 'payment-method',
+      loadChildren: () => import('./module/payment-method/payment-method.module')
+      .then(m => m.PaymentMethodModule)
     }
   ]
 }];
