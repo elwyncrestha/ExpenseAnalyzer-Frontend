@@ -44,12 +44,6 @@ export class TransactionFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.categoryService.getAll().subscribe((response: any) => {
-      this.categories = response.detail;
-    }, error => {
-      console.error(error);
-      this.snackBarService.open('Failed to load categories');
-    });
     this.paymentMethodService.getAll().subscribe((response: any) => {
       this.paymentMethods = response.detail;
     }, error => {
@@ -131,4 +125,13 @@ export class TransactionFormComponent implements OnInit {
     }
   }
 
+  fetchCategory() {
+    this.categoryService.getAllWithSearch({type: this.form.get('type').value})
+    .subscribe((response: any) => {
+      this.categories = response.detail;
+    }, error => {
+      console.error(error);
+      this.snackBarService.open('Failed to load categories');
+    });
+  }
 }
