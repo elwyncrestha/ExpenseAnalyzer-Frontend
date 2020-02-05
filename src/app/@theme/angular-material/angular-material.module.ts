@@ -16,6 +16,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 const COMPONENTS = [];
 const MODULES = [
@@ -34,7 +35,8 @@ const MODULES = [
   MatDialogModule,
   MatProgressSpinnerModule,
   MatPaginatorModule,
-  MatSelectModule
+  MatSelectModule,
+  MatDatepickerModule
 ];
 
 @NgModule({

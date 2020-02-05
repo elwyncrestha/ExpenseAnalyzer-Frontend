@@ -7,6 +7,10 @@ export class ObjectUtils {
     return this.isEmpty(input) ? undefined : input;
   }
 
+  public static setUndefinedOrElseId(input: any): any {
+    return this.isEmpty(input) ? undefined : input._id;
+  }
+
   /**
    *
    * @param obj A model object containing property and its value.

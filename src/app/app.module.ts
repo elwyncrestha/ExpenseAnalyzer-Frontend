@@ -11,6 +11,7 @@ import {AngularMaterialModule} from './@theme/angular-material/angular-material.
 import {RegisterComponent} from './component/register/register.component';
 import {HttpClientModule} from '@angular/common/http';
 import {CoreModule} from './@core/core.module';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {CoreModule} from './@core/core.module';
     BrowserAnimationsModule,
     AngularMaterialModule,
     HttpClientModule,
-    CoreModule
+    CoreModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent],
