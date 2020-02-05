@@ -16,6 +16,11 @@ const routes: Routes = [{
       path: 'category',
       loadChildren: () => import('./module/category/category.module')
       .then(m => m.CategoryModule)
+    },
+    {
+      path: 'expense-status',
+      loadChildren: () => import('./module/expense-status/expense-status.module')
+      .then(m => m.ExpenseStatusModule)
     }
   ]
 }];
