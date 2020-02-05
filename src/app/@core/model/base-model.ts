@@ -6,4 +6,5 @@ export abstract class BaseModel {
   __v: number;
   createdAt: Date;
   updatedAt: Date;
+  createdBy: string;
 }

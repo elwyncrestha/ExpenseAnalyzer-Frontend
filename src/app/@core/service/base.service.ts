@@ -30,6 +30,12 @@ export abstract class BaseService<T> {
     return this.http.get(req.url, {headers: req.header});
   }
 
+  public getAllWithSearch(obj: any): Observable<any> {
+    const req = AppUtils.getRequest(`${this.getAPI()}/all`);
+
+    return this.http.post(req.url, obj, {headers: req.header});
+  }
+
   public getPageable(page: number = 1, size: number = 10): Observable<any> {
     const req = AppUtils.getRequest(`${this.getAPI()}/list?page=${page}&size=${size}`);
 

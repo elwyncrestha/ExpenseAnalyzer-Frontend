@@ -1,10 +1,31 @@
 <div class="d-flex justify-content-around">
-  <mat-card>
-    <mat-card-title>Category Visualization</mat-card-title>
-    <mat-card-subtitle>Expense VS Income Categories</mat-card-subtitle>
-    <mat-card-content>
-      <app-category-chart></app-category-chart>
-    </mat-card-content>
-  </mat-card>
+  <div class="p-2">
+    <mat-card>
+      <mat-card-title>Transaction Variations</mat-card-title>
+      <mat-card-subtitle>Expense Transactions VS Income Transactions</mat-card-subtitle>
+      <mat-card-content>
+        <app-transaction-by-duration-chart></app-transaction-by-duration-chart>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>
-
+<div class="d-flex flex-row justify-content-around">
+  <div class="p-2">
+    <mat-card>
+      <mat-card-title>Category Visualization</mat-card-title>
+      <mat-card-subtitle>Expense VS Income Categories</mat-card-subtitle>
+      <mat-card-content>
+        <app-category-chart></app-category-chart>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="p-2">
+    <mat-card>
+      <mat-card-title>Expense Type Visualization</mat-card-title>
+      <mat-card-subtitle>Total Expense VS Income Transactions Counts</mat-card-subtitle>
+      <mat-card-content>
+        <app-transaction-type-chart></app-transaction-type-chart>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
