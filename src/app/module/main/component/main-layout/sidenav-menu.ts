@@ -7,4 +7,5 @@ export class Menu {
 export const MENU_ITEMS: Array<Menu> = [
   {title: 'Dashboard', icon: 'dashboard', link: '/main/dashboard'},
   {title: 'Category', icon: 'category', link: '/main/category'},
+  {title: 'Status', icon: 'monetization_on', link: '/main/expense-status'},
 ];
