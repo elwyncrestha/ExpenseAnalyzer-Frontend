@@ -8,4 +8,5 @@ export class User extends BaseModel {
   username: string;
   password: string;
   tokens: [];
+  image: string;
 }

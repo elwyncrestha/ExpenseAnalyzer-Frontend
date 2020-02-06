@@ -70,6 +70,9 @@ export class ProfileComponent implements OnInit {
       ],
       token: [
         ObjectUtils.setUndefinedIfNull(user.tokens)
+      ],
+      image: [
+        ObjectUtils.setUndefinedIfNull(user.tokens)
       ]
     });
   }
@@ -82,5 +85,22 @@ export class ProfileComponent implements OnInit {
       console.error(error);
       this.snackBarService.open('Failed to update profile');
     });
+  }
+
+  fileInputChange(e) {
+    const file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+    const pattern = /image-*/;
+    const reader = new FileReader();
+    if (!file.type.match(pattern)) {
+      this.snackBarService.open('Invalid file format');
+      return;
+    }
+    reader.onload = this._handleReaderLoaded.bind(this);
+    reader.readAsDataURL(file);
+  }
+
+  _handleReaderLoaded(e) {
+    const reader = e.target;
+    this.form.get('image').setValue(reader.result);
   }
 }
