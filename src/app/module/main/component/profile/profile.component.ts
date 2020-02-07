@@ -6,6 +6,7 @@ import {SnackBarService} from '../../../../@theme/angular-material/service/snack
 import {ObjectUtils} from '../../../../@core/utils/object.utils';
 import {Pattern} from '../../../../@core/constant/pattern';
 import {MatDialogRef} from '@angular/material/dialog';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -22,6 +23,7 @@ export class ProfileComponent implements OnInit {
     private userService: UserService,
     private snackBarService: SnackBarService,
     public dialogRef: MatDialogRef<ProfileComponent>,
+    public domSanitizer: DomSanitizer,
   ) {
   }
 

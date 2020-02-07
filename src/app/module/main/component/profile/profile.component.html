@@ -1,7 +1,7 @@
 <form (ngSubmit)="submit()" [formGroup]="form">
   <div *ngIf="controls?.image.value" class="row text-center">
     <div class="col-md-12">
-      <img [src]="controls?.image.value" alt="Profile Image"
+      <img [src]="domSanitizer.bypassSecurityTrustUrl(controls?.image.value)" alt="Profile Image"
            style="max-width:300px;max-height:300px"/>
     </div>
   </div>
