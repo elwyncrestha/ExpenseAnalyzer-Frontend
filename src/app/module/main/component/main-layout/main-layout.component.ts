@@ -63,6 +63,7 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
   profile() {
     const dialogRef = this.matDialog.open(ProfileComponent, {
       width: '500px',
+      maxHeight: '90vh'
     });
   }
 }
