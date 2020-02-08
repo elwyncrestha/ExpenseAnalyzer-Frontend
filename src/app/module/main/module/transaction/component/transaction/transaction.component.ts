@@ -29,6 +29,18 @@ export class TransactionComponent implements OnInit {
     page: 1
   };
   categoryTypeEnum = CategoryType;
+  todayPanelOpenState = false;
+  transactionByDurationData: {
+    today: Array<Expense>,
+    thisWeek: Array<Expense>,
+    thisMonth: Array<Expense>,
+    thisYear: Array<Expense>
+  } = {
+    today: undefined,
+    thisWeek: undefined,
+    thisMonth: undefined,
+    thisYear: undefined
+  };
 
   constructor(
     private service: ExpenseService,
@@ -90,4 +102,22 @@ export class TransactionComponent implements OnInit {
     });
   }
 
+  loadTransactionByDuration() {
+    if (this.todayPanelOpenState) {
+      this.service.getTransactionsDataByDuration().subscribe((response: any) => {
+        const data = response.detail;
+        this.transactionByDurationData.today = new Array<Expense>();
+        this.transactionByDurationData.today.push(...data.today.income, ...data.today.expense);
+        this.transactionByDurationData.thisWeek = new Array<Expense>();
+        this.transactionByDurationData.thisWeek.push(...data.thisWeek.income, ...data.thisWeek.expense);
+        this.transactionByDurationData.thisMonth = new Array<Expense>();
+        this.transactionByDurationData.thisMonth.push(...data.thisMonth.income, ...data.thisMonth.expense);
+        this.transactionByDurationData.thisYear = new Array<Expense>();
+        this.transactionByDurationData.thisYear.push(...data.thisYear.income, ...data.thisYear.expense);
+      }, error => {
+        console.error(error);
+        this.snackBarService.open('Failed to load transactions by duration');
+      });
+    }
+  }
 }
