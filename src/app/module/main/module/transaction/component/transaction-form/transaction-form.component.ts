@@ -30,7 +30,7 @@ export class TransactionFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private snackBarService: SnackBarService,
-    private dialogRef: MatDialogRef<TransactionFormComponent, DialogResponse>,
+    public dialogRef: MatDialogRef<TransactionFormComponent, DialogResponse>,
     private service: ExpenseService,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: Expense,
     private categoryService: CategoryService,

@@ -21,7 +21,7 @@ export class ExpenseStatusFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private snackBarService: SnackBarService,
-    private dialogRef: MatDialogRef<ExpenseStatusFormComponent, DialogResponse>,
+    public dialogRef: MatDialogRef<ExpenseStatusFormComponent, DialogResponse>,
     private service: ExpenseStatusService,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: ExpenseStatus
   ) {

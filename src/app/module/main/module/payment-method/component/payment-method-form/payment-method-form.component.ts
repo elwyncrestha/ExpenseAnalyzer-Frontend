@@ -21,7 +21,7 @@ export class PaymentMethodFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private snackBarService: SnackBarService,
-    private dialogRef: MatDialogRef<PaymentMethodFormComponent, DialogResponse>,
+    public dialogRef: MatDialogRef<PaymentMethodFormComponent, DialogResponse>,
     private service: PaymentMethodService,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: PaymentMethod
   ) {

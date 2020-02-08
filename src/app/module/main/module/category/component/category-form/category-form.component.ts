@@ -21,7 +21,7 @@ export class CategoryFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private snackBarService: SnackBarService,
-    private dialogRef: MatDialogRef<CategoryFormComponent, DialogResponse>,
+    public dialogRef: MatDialogRef<CategoryFormComponent, DialogResponse>,
     private categoryService: CategoryService,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: Category
   ) {
