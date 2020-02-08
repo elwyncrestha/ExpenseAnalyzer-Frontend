@@ -98,3 +98,51 @@
     </mat-card>
   </div>
 </div>
+<br/>
+<div class="row">
+  <div class="col-md-12">
+    <mat-expansion-panel (afterExpand)="loadTransactionByDuration()"
+                         (closed)="todayPanelOpenState = false"
+                         (opened)="todayPanelOpenState = true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Transactions by Duration
+        </mat-panel-title>
+        <mat-panel-description>
+          Click to {{todayPanelOpenState ? 'close' : 'view'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-card *ngIf="todayPanelOpenState">
+        <mat-card-title>Today's Transactions</mat-card-title>
+        <mat-card-content>
+          <app-transaction-by-duration
+            [dataSource]="transactionByDurationData?.today"></app-transaction-by-duration>
+        </mat-card-content>
+      </mat-card>
+      <br/>
+      <mat-card *ngIf="todayPanelOpenState">
+        <mat-card-title>This week's Transactions</mat-card-title>
+        <mat-card-content>
+          <app-transaction-by-duration
+            [dataSource]="transactionByDurationData?.thisWeek"></app-transaction-by-duration>
+        </mat-card-content>
+      </mat-card>
+      <br/>
+      <mat-card *ngIf="todayPanelOpenState">
+        <mat-card-title>This month's Transactions</mat-card-title>
+        <mat-card-content>
+          <app-transaction-by-duration
+            [dataSource]="transactionByDurationData?.thisMonth"></app-transaction-by-duration>
+        </mat-card-content>
+      </mat-card>
+      <br/>
+      <mat-card *ngIf="todayPanelOpenState">
+        <mat-card-title>This year's Transactions</mat-card-title>
+        <mat-card-content>
+          <app-transaction-by-duration
+            [dataSource]="transactionByDurationData?.thisYear"></app-transaction-by-duration>
+        </mat-card-content>
+      </mat-card>
+    </mat-expansion-panel>
+  </div>
+</div>

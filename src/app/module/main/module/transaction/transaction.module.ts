@@ -6,10 +6,11 @@ import {TransactionComponent} from './component/transaction/transaction.componen
 import {TransactionFormComponent} from './component/transaction-form/transaction-form.component';
 import {AngularMaterialModule} from '../../../../@theme/angular-material/angular-material.module';
 import {CoreModule} from '../../../../@core/core.module';
+import {TransactionByDurationComponent} from './component/transaction-by-duration/transaction-by-duration.component';
 
 
 @NgModule({
-  declarations: [TransactionComponent, TransactionFormComponent],
+  declarations: [TransactionComponent, TransactionFormComponent, TransactionByDurationComponent],
   imports: [
     CommonModule,
     TransactionRoutingModule,
