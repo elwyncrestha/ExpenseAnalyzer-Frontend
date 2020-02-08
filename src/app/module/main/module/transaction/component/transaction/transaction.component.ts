@@ -81,13 +81,16 @@ export class TransactionComponent implements OnInit {
   }
 
   add() {
-    const dialogRef = this.matDialog.open(TransactionFormComponent);
+    const dialogRef = this.matDialog.open(TransactionFormComponent, {
+      maxHeight: '90vh'
+    });
     DialogUtils.resolve(dialogRef, TransactionComponent.load, this);
   }
 
   edit(model: Expense) {
     const dialogRef = this.matDialog.open(TransactionFormComponent, {
-      data: model
+      data: model,
+      maxHeight: '90vh'
     });
     DialogUtils.resolve(dialogRef, TransactionComponent.load, this);
   }
