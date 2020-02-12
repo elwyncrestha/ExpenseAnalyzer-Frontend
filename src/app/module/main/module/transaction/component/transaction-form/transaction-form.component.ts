@@ -100,6 +100,10 @@ export class TransactionFormComponent implements OnInit {
         [Validators.required]
       ]
     });
+    this.form.get('type').valueChanges.subscribe(v => this.fetchCategory(v));
+    if (!ObjectUtils.isEmpty(model._id)) {
+      this.fetchCategory(model.type.toString(2));
+    }
   }
 
   submit(): void {
@@ -125,8 +129,8 @@ export class TransactionFormComponent implements OnInit {
     }
   }
 
-  fetchCategory() {
-    this.categoryService.getAllWithSearch({type: this.form.get('type').value})
+  fetchCategory(typeValue: string) {
+    this.categoryService.getAllWithSearch({type: typeValue})
     .subscribe((response: any) => {
       this.categories = response.detail;
     }, error => {
